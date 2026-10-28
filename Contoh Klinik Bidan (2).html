@@ -1,0 +1,350 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Contoh Klinik Bidan</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<style>
+/* Mobile-first. Pola: bar kontak, header putih, hero foto penuh, kartu layanan geser, alasan memilih, form homevisit, ulasan, CTA.
+   Foto stok Unsplash, ditautkan langsung. Warna cadangan tampil bila foto tidak termuat. */
+:root{
+  --bg:#FFFFFF; --alt:#EEF6F5; --card:#FFFFFF; --ink:#13292A; --mute:#566E6D; --line:#DCE7E6;
+  --brand:#0D6A61; --on-brand:#FFFFFF; --sun:#FFD21F; --on-sun:#1D1700; --brand-text:#0D6A61;
+  --f:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --img-hero:url("https://images.unsplash.com/photo-1770514327738-384e0a157854?w=1400&q=70");
+  --img-a:url("https://images.unsplash.com/photo-1632052999485-d748103abf98?w=700&q=70");
+  --img-b:url("https://images.unsplash.com/photo-1534179490021-a8261bbbed30?w=700&q=70");
+  --img-c:url("https://images.unsplash.com/photo-1770514327738-384e0a157854?w=700&q=70");
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0D1819; --alt:#12201F; --card:#152524; --ink:#E7F2F0; --mute:#9DB6B3; --line:#263F3D;
+  --brand:#2FB5A8; --on-brand:#06201D; --brand-text:#5ED0C4; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0D1819; --alt:#12201F; --card:#152524; --ink:#E7F2F0; --mute:#9DB6B3; --line:#263F3D;
+  --brand:#2FB5A8; --on-brand:#06201D; --brand-text:#5ED0C4; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.65 var(--f);padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+h1,h2,h3{margin:0;font-weight:800;letter-spacing:-.015em;line-height:1.15;text-wrap:balance}
+h1{font-size:clamp(30px,8vw,52px)}
+h2{font-size:clamp(24px,6vw,36px)}
+h3{font-size:17px;font-weight:700;line-height:1.3}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.g{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.w{max-width:1080px;margin:0 auto}
+section{padding:48px 0;scroll-margin-top:60px}
+.lbl{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;padding-bottom:6px;border-bottom:2px solid var(--brand)}
+.head{display:grid;gap:12px;justify-items:start;margin-bottom:24px}
+.head p{color:var(--mute);max-width:58ch}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 26px;border-radius:99px;border:2px solid var(--sun);background:var(--sun);color:var(--on-sun);font:800 14px/1 var(--f);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;cursor:pointer;width:100%}
+.btn.line{background:transparent;color:#fff;border-color:rgba(255,255,255,.75)}
+.btn.dark{background:var(--brand);border-color:var(--brand);color:var(--on-brand)}
+.btn.out{background:transparent;color:var(--ink);border-color:var(--ink)}
+
+.sample{background:#13292A;color:#fff;font-size:13px;line-height:1.4;padding:9px max(16px,env(safe-area-inset-left,0px))}
+.bar{background:linear-gradient(90deg,#0D6A61,#2B8F86);color:#fff;font-size:13px;font-weight:600;text-align:center;padding:7px 16px}
+header.h{position:sticky;top:0;z-index:6;background:var(--bg);border-bottom:1px solid var(--line)}
+.h .w{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand svg{width:36px;height:36px;flex:none}
+.brand b{font-weight:800;font-size:17px;line-height:1.1;display:block}
+.brand small{display:block;font-size:11px;color:var(--mute);letter-spacing:.04em}
+.nav{display:none;gap:26px;font-weight:600;font-size:15px}
+.nav a{text-decoration:none}.nav a:hover{color:var(--brand-text)}
+.pill{display:none}
+
+/* hero */
+.hero{position:relative;color:#fff;background:#14363A var(--img-hero) center 30%/cover no-repeat;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,28,30,.55),rgba(7,28,30,.78));z-index:-1}
+.hero .w{display:grid;gap:18px;justify-items:center;text-align:center;padding:64px 0 56px}
+.hero .lbl{border-color:#fff;color:#fff}
+.hero p{font-size:17px;max-width:46ch;opacity:.95}
+.cta{display:grid;gap:12px;width:100%;max-width:360px;margin-top:6px}
+
+/* layanan */
+.alt{background:var(--alt)}
+.rail{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 16px 14px;margin:0 calc(-1*max(16px,env(safe-area-inset-left,0px)));scrollbar-width:thin}
+.cardp{flex:0 0 74%;scroll-snap-align:center;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:grid;grid-template-rows:170px auto}
+.cardp .ph{background-color:#1D4F52;background-size:cover;background-position:center}
+.cardp .tx{padding:14px 16px 18px;display:grid;gap:6px;align-content:start}
+.cardp p{font-size:14px;color:var(--mute);line-height:1.5}
+.cardp .tag{font-size:12px;font-weight:700;color:var(--brand-text)}
+.ph.a{background-image:var(--img-a)}.ph.b{background-image:var(--img-b)}.ph.c{background-image:var(--img-c);background-position:60% 35%}
+.ph.d{display:grid;place-items:center;background:var(--brand);color:#fff}
+.ph.d svg{width:64px;height:64px}
+
+/* alasan */
+.why{display:grid;gap:14px}
+.why div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;display:grid;gap:6px}
+.why p{color:var(--mute);font-size:15px}
+.ico{width:40px;height:40px;border-radius:12px;background:var(--alt);color:var(--brand-text);display:grid;place-items:center;margin-bottom:4px}
+.ico svg{width:22px;height:22px}
+
+/* form */
+.hv{display:grid;gap:22px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px}
+.hv form{display:grid;gap:16px}
+label{display:grid;gap:6px;font-weight:700;font-size:14px}
+input,select,textarea{width:100%;min-height:52px;padding:12px 14px;font:500 16px var(--f);color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:12px}
+textarea{min-height:92px;resize:vertical;line-height:1.45}
+.r2{display:grid;gap:16px}
+.msg{background:var(--alt);border-radius:14px;padding:16px;white-space:pre-wrap;font-size:15px;line-height:1.55;min-height:150px}
+.ok{min-height:20px;font-size:14px;color:var(--brand-text);font-weight:700}
+.fine{font-size:13px;color:var(--mute)}
+
+/* jam */
+.status{display:flex;gap:12px;align-items:center;background:var(--brand);color:var(--on-brand);border-radius:16px;padding:16px 18px;margin-bottom:14px;font-weight:700}
+.dot{width:12px;height:12px;border-radius:50%;background:var(--sun);flex:none;animation:pulse 2.2s ease-out infinite}
+.status.closed .dot{background:#C9D7D5;animation:none}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,210,31,.6)}70%{box-shadow:0 0 0 12px rgba(255,210,31,0)}100%{box-shadow:0 0 0 0 rgba(255,210,31,0)}}
+.jam{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--card)}
+.jam div{display:flex;justify-content:space-between;gap:12px;padding:13px 18px;border-bottom:1px solid var(--line);font-size:15px}
+.jam div:last-child{border-bottom:0}
+.jam .now{background:var(--sun);color:var(--on-sun);font-weight:800}
+.jam b{white-space:nowrap}
+.two{display:grid;gap:14px}
+.sub{font-size:14px;color:var(--mute);margin-top:2px}
+
+/* ulasan */
+.rv{display:grid;gap:14px}
+.rv blockquote{margin:0;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;display:grid;gap:12px}
+.rv p{font-size:15px;line-height:1.6}
+.rv cite{font-style:normal;font-weight:700;font-size:14px}
+.rv cite span{display:block;font-weight:500;color:var(--mute);font-size:13px}
+.stars{color:#E0A800;letter-spacing:2px;font-size:15px}
+
+/* lokasi & faq */
+.map{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--alt);aspect-ratio:4/3}
+.map svg{display:block;width:100%;height:100%}
+.loc{display:grid;gap:16px}
+details{border-bottom:1px solid var(--line);padding:14px 0}
+details:first-of-type{border-top:1px solid var(--line)}
+summary{cursor:pointer;font-weight:700;font-size:16px;line-height:1.4;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:center;min-height:44px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:24px;font-weight:500;color:var(--brand-text)}
+details[open] summary::after{content:"\2212"}
+details p{color:var(--mute);margin-top:6px;font-size:15px}
+
+.final{background:var(--brand);color:var(--on-brand);text-align:center}
+.final .w{display:grid;gap:16px;justify-items:center;padding:52px 0}
+.final p{opacity:.92;max-width:44ch}
+footer{padding:28px 0;font-size:14px;color:var(--mute);display:grid;gap:14px}
+footer b{color:var(--ink)}
+
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:7;background:var(--bg);border-top:1px solid var(--line);padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.dock .btn{min-height:46px;font-size:13px;padding:0 10px}
+
+@media (prefers-reduced-motion:reduce){.dot{animation:none}html{scroll-behavior:auto}}
+
+@media (min-width:860px){
+  body{font-size:17px;padding-bottom:0}
+  .dock{display:none}
+  section{padding:80px 0}
+  .nav{display:flex}
+  .pill{display:inline-flex;min-height:44px;width:auto;font-size:13px}
+  .btn{width:auto}
+  .hero .w{padding:120px 0 110px}
+  .cta{grid-template-columns:1fr 1fr;max-width:460px}
+  .rail{display:grid;grid-template-columns:repeat(4,1fr);overflow:visible;padding:0;margin:0}
+  .cardp{flex:none}
+  .why{grid-template-columns:repeat(4,1fr)}
+  .hv{grid-template-columns:1fr 1fr;padding:34px;gap:40px}
+  .r2{grid-template-columns:1fr 1fr}
+  .two{grid-template-columns:1fr 1fr;gap:36px;align-items:start}
+  .rv{grid-template-columns:repeat(3,1fr)}
+  .loc{grid-template-columns:1fr 1fr;align-items:center;gap:36px}
+  footer{grid-template-columns:2fr 1fr 1fr}
+}
+</style>
+
+<div class="sample">Contoh tampilan dari Aksen Studio. Nama klinik, alamat, jam, layanan, dan ulasan di halaman ini hanya contoh. Foto ilustrasi dari Unsplash.</div>
+<div class="bar g">WhatsApp 0812-0000-0000 (contoh)</div>
+
+<header class="h g">
+  <div class="w">
+    <a class="brand" href="#">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="var(--brand)"/><path d="M20 30s-8-5.2-8-11a4.6 4.6 0 0 1 8-3 4.6 4.6 0 0 1 8 3c0 5.8-8 11-8 11z" fill="#FFD21F"/></svg>
+      <span><b>Klinik Bidan Contoh</b><small>BANDA ACEH</small></span>
+    </a>
+    <nav class="nav" aria-label="Menu utama"><a href="#layanan">Layanan</a><a href="#homevisit">Homevisit</a><a href="#jam">Jam praktik</a><a href="#ulasan">Ulasan</a><a href="#lokasi">Lokasi</a></nav>
+    <a class="btn pill" href="#homevisit">Pesan homevisit</a>
+  </div>
+</header>
+
+<main>
+  <div class="hero g">
+    <div class="w">
+      <span class="lbl">Klinik bidan</span>
+      <h1>Perawatan Ibu dan Bayi, di Klinik maupun di Rumah</h1>
+      <p>Melayani pemeriksaan kehamilan, perawatan nifas, KB, imunisasi, dan perawatan bayi oleh bidan berpengalaman.</p>
+      <div class="cta">
+        <a class="btn" href="#homevisit">Pesan homevisit</a>
+        <a class="btn line" href="#layanan">Lihat layanan</a>
+      </div>
+    </div>
+  </div>
+
+  <section id="layanan" class="g">
+    <div class="w">
+      <div class="head"><span class="lbl">Layanan</span><h2>Layanan Kesehatan Ibu dan Anak</h2><p>Seluruh layanan dapat dipesan melalui WhatsApp. Label "Homevisit" menandakan layanan yang dapat dilakukan di rumah pasien.</p></div>
+      <div class="rail" tabindex="0" aria-label="Daftar layanan, geser ke samping">
+        <article class="cardp"><div class="ph c" role="img" aria-label="Ibu berhijab bersama bayinya"></div><div class="tx"><h3>Perawatan Nifas dan Ibu Menyusui</h3><p>Kontrol pasca persalinan, perawatan luka, dan pendampingan menyusui.</p><span class="tag">Homevisit</span></div></article>
+        <article class="cardp"><div class="ph b" role="img" aria-label="Bayi baru lahir dalam gendongan"></div><div class="tx"><h3>Perawatan Bayi Baru Lahir</h3><p>Pijat bayi, perawatan tali pusat, dan pemantauan tumbuh kembang.</p><span class="tag">Homevisit</span></div></article>
+        <article class="cardp"><div class="ph a" role="img" aria-label="Bidan memeriksa bayi bersama ibunya"></div><div class="tx"><h3>Imunisasi dan Pemeriksaan Bayi</h3><p>Imunisasi anak sesuai jadwal dan pemeriksaan rutin.</p><span class="tag">Klinik</span></div></article>
+        <article class="cardp"><div class="ph d" aria-hidden="true"><svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="22" cy="12" r="6"/><path d="M12 40V28a10 10 0 0 1 20 0v12M17 31h10"/></svg></div><div class="tx"><h3>Pemeriksaan Kehamilan dan KB</h3><p>Pemeriksaan rutin ibu hamil, konsultasi gizi, dan konsultasi alat kontrasepsi.</p><span class="tag">Klinik</span></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt g">
+    <div class="w">
+      <div class="head"><span class="lbl">Keunggulan</span><h2>Mengapa Memilih Klinik Kami</h2></div>
+      <div class="why">
+        <div><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8v10H3z"/></svg></span><h3>Bidan datang ke rumah</h3><p>Ibu dan bayi tidak perlu keluar rumah, cukup pesan lewat formulir.</p></div>
+        <div><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><h3>Buka setiap hari</h3><p>Klinik buka pukul 08.00 sampai 22.00 WIB, termasuk hari libur.</p></div>
+        <div><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span><h3>Tenaga bersertifikat</h3><p>Ditangani bidan yang terlatih dan berpengalaman di bidangnya.</p></div>
+        <div><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-12 7l-5 1 1-4a8 8 0 1 1 16-4z"/></svg></span><h3>Pesan lewat WhatsApp</h3><p>Pemesanan cepat dan konfirmasi langsung dari admin.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="homevisit" class="g">
+    <div class="w">
+      <div class="head"><span class="lbl">Homevisit</span><h2>Pemesanan Homevisit</h2><p>Silakan lengkapi data berikut. Pesan akan tersusun otomatis dan dapat langsung dikirim ke WhatsApp admin.</p></div>
+      <div class="hv">
+        <form id="f" novalidate>
+          <label for="n">Nama<input id="n" autocomplete="name" value="Ibu Sari"></label>
+          <label for="a">Alamat<input id="a" autocomplete="street-address" value="Jl. Contoh No. 5, Lamgugob"></label>
+          <div class="r2">
+            <label for="d">Tanggal<input id="d" type="date"></label>
+            <label for="j">Jam<input id="j" type="time" value="10:00" min="08:00" max="20:00"></label>
+          </div>
+          <label for="s">Jenis layanan
+            <select id="s"><option>Perawatan nifas</option><option>Perawatan bayi baru lahir</option><option>Pendampingan menyusui</option><option>Pemeriksaan ibu hamil</option></select>
+          </label>
+          <label for="k">Keluhan<textarea id="k">Bayi 10 hari, ingin cek tali pusat dan berat badan.</textarea></label>
+        </form>
+        <div style="display:grid;gap:14px;align-content:start">
+          <h3>Pesan yang akan dikirim</h3>
+          <div class="msg" id="msg"></div>
+          <a class="btn" id="wa" href="#" target="_blank" rel="noopener">Kirim ke WhatsApp Admin</a>
+          <button class="btn out" id="copy" type="button">Salin Pesan</button>
+          <div class="ok" id="ok" role="status"></div>
+          <p class="fine">Pada website sebenarnya, tombol ini langsung terhubung ke nomor admin klinik. Jam homevisit pukul 08.00 sampai 20.00 WIB.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="jam" class="alt g">
+    <div class="w two">
+      <div class="head" style="margin:0"><span class="lbl">Jam praktik</span><h2>Jam Buka Klinik</h2><p>Klinik buka setiap hari. Homevisit tersedia pukul 08.00 sampai 20.00 WIB.</p></div>
+      <div>
+        <div class="status" id="status" aria-live="polite"><span class="dot"></span><span id="st">Memeriksa jam buka</span></div>
+        <div class="jam" id="jam-list"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ulasan" class="g">
+    <div class="w">
+      <div class="head"><span class="lbl">Ulasan</span><h2>Kata Pasien Kami</h2><p>Contoh tampilan ulasan. Akan diganti dengan ulasan asli dari pasien klinik Anda.</p></div>
+      <div class="rv">
+        <blockquote><div class="stars" aria-label="5 dari 5">★★★★★</div><p>Bidannya ramah dan sabar menjelaskan cara merawat bayi. Saya jadi lebih tenang di rumah.</p><cite>Ibu Rina<span>Lamteh (contoh)</span></cite></blockquote>
+        <blockquote><div class="stars" aria-label="5 dari 5">★★★★★</div><p>Pesan homevisit mudah, tinggal isi formulir. Bidan datang tepat waktu sesuai jadwal.</p><cite>Ibu Nadia<span>Lampineung (contoh)</span></cite></blockquote>
+        <blockquote><div class="stars" aria-label="5 dari 5">★★★★★</div><p>Klinik bersih dan pelayanannya profesional. Imunisasi anak berjalan lancar.</p><cite>Ibu Intan<span>Ulee Kareng (contoh)</span></cite></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section id="lokasi" class="alt g">
+    <div class="w">
+      <div class="head"><span class="lbl">Lokasi</span><h2>Kunjungi Klinik Kami</h2></div>
+      <div class="loc">
+        <div class="map">
+          <svg viewBox="0 0 400 300" role="img" aria-label="Peta sederhana lokasi klinik">
+            <rect width="400" height="300" fill="var(--alt)"/>
+            <g stroke="var(--line)" stroke-width="14" fill="none" stroke-linecap="round"><path d="M-10 210L410 150"/><path d="M130 -10L190 310"/><path d="M-10 60L410 90"/></g>
+            <g stroke="var(--card)" stroke-width="8" fill="none" stroke-linecap="round"><path d="M-10 210L410 150"/><path d="M130 -10L190 310"/><path d="M-10 60L410 90"/></g>
+            <path d="M162 162c0 0-22-14-22-30a12 12 0 0 1 22-6 12 12 0 0 1 22 6c0 16-22 30-22 30z" transform="translate(30 -18)" fill="var(--brand)"/>
+            <circle cx="192" cy="116" r="6" fill="#FFD21F"/>
+          </svg>
+        </div>
+        <div style="display:grid;gap:14px;justify-items:start">
+          <div><b>Klinik Bidan Contoh</b><p class="sub">Jl. Contoh No. 1, Banda Aceh<br>Alamat asli menyusul</p></div>
+          <a class="btn dark" href="#" aria-disabled="true">Lihat di Google Maps</a>
+          <p class="fine">Pada website sebenarnya, tombol ini menampilkan rute menuju klinik.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="g">
+    <div class="w">
+      <div class="head"><span class="lbl">FAQ</span><h2>Pertanyaan yang Sering Diajukan</h2></div>
+      <details><summary>Bagaimana sistem pembayarannya?</summary><p>Contoh: pembayaran melalui transfer ke rekening klinik, atau secara tunai dengan konfirmasi kepada admin. Ketentuan sebenarnya disesuaikan dengan klinik.</p></details>
+      <details><summary>Sampai di mana jangkauan homevisit?</summary><p>Contoh: wilayah Banda Aceh dan sekitarnya. Silakan kirim alamat melalui formulir, kemudian admin akan mengonfirmasi jangkauannya.</p></details>
+      <details><summary>Apakah perlu membuat janji terlebih dahulu?</summary><p>Untuk homevisit, pemesanan dilakukan melalui formulir di atas. Untuk kunjungan ke klinik, mohon mengirim pesan terlebih dahulu agar tidak menunggu lama.</p></details>
+      <details><summary>Apakah lokasi rumah dapat dikirim melalui WhatsApp?</summary><p>Dapat. Setelah mengirim formulir, mohon kirimkan juga lokasi rumah melalui fitur berbagi lokasi agar bidan mudah menemukan alamat.</p></details>
+    </div>
+  </section>
+
+  <div class="final g">
+    <div class="w">
+      <h2>Bingung Memilih Layanan?</h2>
+      <p>Konsultasikan kebutuhan Ibu dan bayi bersama admin kami.</p>
+      <a class="btn" href="#homevisit">Konsultasi sekarang</a>
+    </div>
+  </div>
+</main>
+
+<footer class="g">
+  <div class="w" style="display:grid;gap:14px">
+    <div><b>Klinik Bidan Contoh</b><br>Layanan kesehatan ibu dan anak di Banda Aceh.</div>
+    <div><b>Kontak</b><br>WhatsApp 0812-0000-0000 (contoh)</div>
+    <div><b>Jam</b><br>Setiap hari pukul 08.00 sampai 22.00</div>
+  </div>
+</footer>
+
+<div class="dock">
+  <a class="btn" href="#homevisit">Pesan homevisit</a>
+  <a class="btn out" href="#lokasi">Lokasi klinik</a>
+</div>
+
+<script>
+(function(){
+  var HARI=['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'],BLN=['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+  function wib(){
+    try{var p=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Jakarta',weekday:'short',hour:'numeric',minute:'numeric',hour12:false}).formatToParts(new Date()),o={};
+      p.forEach(function(x){o[x.type]=x.value});
+      var map={Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6};return {d:map[o.weekday],h:parseInt(o.hour,10)%24,m:parseInt(o.minute,10)}}
+    catch(e){var n=new Date();return {d:n.getDay(),h:n.getHours(),m:n.getMinutes()}}
+  }
+  var t=wib(),mins=t.h*60+t.m,st=document.getElementById('status'),lab=document.getElementById('st');
+  var open=mins>=480&&mins<1320,hv=mins>=480&&mins<1200;
+  if(open){lab.textContent=hv?'Klinik sedang buka. Homevisit masih dapat dipesan.':'Klinik sedang buka. Homevisit telah tutup.'}
+  else{st.classList.add('closed');lab.textContent='Klinik sedang tutup. Buka kembali pukul 08.00 WIB.'}
+  document.getElementById('jam-list').innerHTML=HARI.map(function(h,i){return '<div'+(i===t.d?' class="now"':'')+'><span>'+h+(i===t.d?' (hari ini)':'')+'</span><b>08.00 sampai 22.00</b></div>'}).join('');
+
+  var d=document.getElementById('d');
+  d.value=new Date(Date.now()+86400000).toISOString().slice(0,10);
+  var f=document.getElementById('f'),msgEl=document.getElementById('msg'),wa=document.getElementById('wa'),text='';
+  function v(id){return document.getElementById(id).value.trim()}
+  function tgl(s){var a=s.split('-');if(a.length!==3)return s;var dt=new Date(+a[0],+a[1]-1,+a[2]);return HARI[dt.getDay()]+', '+(+a[2])+' '+BLN[+a[1]-1]+' '+a[0]}
+  function build(){
+    text='Yth. Admin, saya ingin memesan layanan homevisit.\n\nNama : '+(v('n')||'-')+'\nAlamat : '+(v('a')||'-')+'\nHari/tgl/Jam : '+tgl(v('d'))+', '+(v('j')||'-')+' WIB\nJenis layanan : '+v('s')+'\nKeluhan : '+(v('k')||'-')+'\n\nLokasi rumah akan saya kirimkan setelah pesan ini. Terima kasih.';
+    msgEl.textContent=text;wa.href='https://wa.me/?text='+encodeURIComponent(text);
+  }
+  f.addEventListener('input',build);f.addEventListener('change',build);f.addEventListener('submit',function(e){e.preventDefault()});build();
+  document.getElementById('copy').addEventListener('click',function(){
+    var ok=document.getElementById('ok');
+    function done(s){ok.textContent=s;setTimeout(function(){ok.textContent=''},2500)}
+    function sel(){var r=document.createRange();r.selectNodeContents(msgEl);var s=window.getSelection();s.removeAllRanges();s.addRange(r);done('Teks terpilih, tekan salin')}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){done('Pesan disalin')},sel)}else sel();
+  });
+})();
+</script>
+
+</body></html>
